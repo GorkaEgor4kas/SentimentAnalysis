@@ -56,7 +56,7 @@ cd sentiment-analysis-api
 # 2. Запускаем проект
 docker-compose up --build
 ```
-
+```markdown
 После успешного запуска:
 
 - API доступен: http://localhost:8000
@@ -64,8 +64,9 @@ docker-compose up --build
 - PostgreSQL: localhost:5432 (логин: postgres, пароль: password)
 
 ### Способ 2: Локальный запуск (без Docker)
+```
 
-```bash
+``` bash
 # 1. Создаем виртуальное окружение
 python -m venv venv
 
@@ -90,7 +91,7 @@ set DATABASE_URL=postgresql://postgres:password@localhost:5432/sentiment_db
 # 6. Запускаем приложение
 uvicorn main:app --reload
 ```
-
+```markdown
 ## 📡 Использование API
 
 ### POST /analyze
@@ -105,6 +106,7 @@ uvicorn main:app --reload
 | `language` | string | ❌ | Язык текста (по умолчанию "ru") | "ru" |
 
 **Пример запроса:**
+```
 
 ```json
 {
@@ -113,6 +115,7 @@ uvicorn main:app --reload
 }
 ```
 
+```markdown
 ### GET /history
 
 Возвращает историю запросов с пагинацией.
@@ -139,6 +142,7 @@ uvicorn main:app --reload
 ## 🧪 Примеры запросов
 
 ### cURL
+```
 
 ```bash
 # Анализ позитивного текста
@@ -157,9 +161,9 @@ curl "http://localhost:8000/history?limit=5"
 # Получить статистику
 curl "http://localhost:8000/stats"
 ```
-
+```markdown
 ### Python
-
+```
 ```python
 import requests
 
@@ -178,9 +182,9 @@ response = requests.post(url, json=data)
 # Выводим результат
 print(response.json())
 ```
-
+```markdown
 ### JavaScript (fetch)
-
+```
 ```javascript
 fetch('http://localhost:8000/analyze', {
     method: 'POST',
@@ -195,10 +199,10 @@ fetch('http://localhost:8000/analyze', {
 .then(response => response.json())
 .then(data => console.log(data));
 ```
-
+```markdown
 ## 📁 Структура проекта
 
-```
+
 sentiment-analysis-api/
 │
 ├── main.py              # FastAPI приложение, все эндпоинты
@@ -214,12 +218,12 @@ sentiment-analysis-api/
 │
 ├── LICENSE             # Лицензия MIT
 └── README.md           # Эта документация
-```
+
 
 ## 📤 Ответы API
 
 ### POST /analyze — Успешный ответ (200)
-
+```
 ```json
 {
   "id": 1,
@@ -230,8 +234,9 @@ sentiment-analysis-api/
   "timestamp": "2024-03-24T12:00:00"
 }
 ```
-
+```markdown
 ### POST /analyze — Ошибка валидации (422)
+```
 
 ```json
 {
@@ -245,7 +250,9 @@ sentiment-analysis-api/
 }
 ```
 
+```markdown
 ### GET /history — Успешный ответ (200)
+```
 
 ```json
 [
@@ -267,9 +274,9 @@ sentiment-analysis-api/
   }
 ]
 ```
-
+```markdown
 ### GET /stats — Успешный ответ (200)
-
+```
 ```json
 {
   "total_requests": 42,
@@ -281,7 +288,7 @@ sentiment-analysis-api/
   "last_request": "2024-03-24T12:02:00"
 }
 ```
-
+```markdown
 ## ⚠️ Возможные ошибки
 
 | Ошибка | Причина | Решение |
